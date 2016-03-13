@@ -49,7 +49,7 @@ router.delete('/todos/:id', function(req, res) {
     Todo.findByIdAndRemove(id, function(err, result) {
        if(err) {
            return res.status(500).json({err: err.message});
-       } 
+       }
         res.json({message: 'Todo deleted'});
     });
 });
