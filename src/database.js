@@ -1,8 +1,15 @@
 'use strict';
 
 var mongoose = require('mongoose');
+var mongoURL;
 
-mongoose.connect('mongodb://localhost/mean-todo', function(err) {
+if (process.env.NODE_ENV === "production") {
+    mongoURL = process.env.MONGODB_URI;
+} else {
+    mongoURL = 'mongodb://localhost/mean-todo';
+}
+
+mongoose.connect(mongoURL, function(err) {
     if(err) {
         console.log('Failed connecting to Mongodb!');
     } else {
